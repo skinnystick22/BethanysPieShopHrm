@@ -20,8 +20,7 @@ namespace BethanysPieShopHrm.App.Pages
             return base.OnInitializedAsync();
         }
 
-        [Parameter]
-        public string EmployeeId { get; set; }
+        [Parameter] public string EmployeeId { get; set; }
 
         public Employee Employee { get; set; } = new();
 
@@ -35,16 +34,16 @@ namespace BethanysPieShopHrm.App.Pages
         {
             JobCategories = new List<JobCategory>()
             {
-                new() {JobCategoryId = 1, JobCategoryName = "Pie research"},
-                new() {JobCategoryId = 2, JobCategoryName = "Sales"},
-                new() {JobCategoryId = 3, JobCategoryName = "Management"},
-                new() {JobCategoryId = 4, JobCategoryName = "Store staff"},
-                new() {JobCategoryId = 5, JobCategoryName = "Finance"},
-                new() {JobCategoryId = 6, JobCategoryName = "QA"},
-                new() {JobCategoryId = 7, JobCategoryName = "IT"},
-                new() {JobCategoryId = 8, JobCategoryName = "Cleaning"},
-                new() {JobCategoryId = 9, JobCategoryName = "Bakery"},
-                new() {JobCategoryId = 9, JobCategoryName = "Bakery"}
+                new() { JobCategoryId = 1, JobCategoryName = "Pie research" },
+                new() { JobCategoryId = 2, JobCategoryName = "Sales" },
+                new() { JobCategoryId = 3, JobCategoryName = "Management" },
+                new() { JobCategoryId = 4, JobCategoryName = "Store staff" },
+                new() { JobCategoryId = 5, JobCategoryName = "Finance" },
+                new() { JobCategoryId = 6, JobCategoryName = "QA" },
+                new() { JobCategoryId = 7, JobCategoryName = "IT" },
+                new() { JobCategoryId = 8, JobCategoryName = "Cleaning" },
+                new() { JobCategoryId = 9, JobCategoryName = "Bakery" },
+                new() { JobCategoryId = 9, JobCategoryName = "Bakery" }
             };
         }
 
@@ -52,14 +51,14 @@ namespace BethanysPieShopHrm.App.Pages
         {
             Countries = new List<Country>
             {
-                new() {CountryId = 1, Name = "Belgium"},
-                new() {CountryId = 2, Name = "Netherlands"},
-                new() {CountryId = 3, Name = "USA"},
-                new() {CountryId = 4, Name = "Japan"},
-                new() {CountryId = 5, Name = "China"},
-                new() {CountryId = 6, Name = "UK"},
-                new() {CountryId = 7, Name = "France"},
-                new() {CountryId = 8, Name = "Brazil"}
+                new() { CountryId = 1, Name = "Belgium" },
+                new() { CountryId = 2, Name = "Netherlands" },
+                new() { CountryId = 3, Name = "USA" },
+                new() { CountryId = 4, Name = "Japan" },
+                new() { CountryId = 5, Name = "China" },
+                new() { CountryId = 6, Name = "UK" },
+                new() { CountryId = 7, Name = "France" },
+                new() { CountryId = 8, Name = "Brazil" }
             };
         }
 
@@ -106,7 +105,7 @@ namespace BethanysPieShopHrm.App.Pages
                 ExitDate = null,
                 JoinedDate = new DateTime(2017, 12, 24)
             };
-            Employees = new List<Employee> {e1, e2};
+            Employees = new List<Employee> { e1, e2 };
         }
     }
 }
