@@ -7,6 +7,12 @@ namespace BethanysPieShopHrm.App.Pages
 {
     public partial class EmployeeOverview
     {
+        public IEnumerable<Employee> Employees { get; set; }
+
+        private List<Country> Countries { get; set; }
+
+        private List<JobCategory> JobCategories { get; set; }
+
         protected override Task OnInitializedAsync()
         {
             InitializeCountries();
@@ -15,12 +21,6 @@ namespace BethanysPieShopHrm.App.Pages
 
             return base.OnInitializedAsync();
         }
-
-        public IEnumerable<Employee> Employees { get; set; }
-
-        private List<Country> Countries { get; set; }
-
-        private List<JobCategory> JobCategories { get; set; }
 
         private void InitializeJobCategories()
         {

@@ -9,6 +9,16 @@ namespace BethanysPieShopHrm.App.Pages
 {
     public partial class EmployeeDetail
     {
+        [Parameter] public string EmployeeId { get; set; }
+
+        public Employee Employee { get; set; } = new();
+
+        public IEnumerable<Employee> Employees { get; set; }
+
+        private List<Country> Countries { get; set; }
+
+        private List<JobCategory> JobCategories { get; set; }
+
         protected override Task OnInitializedAsync()
         {
             InitializeCountries();
@@ -19,16 +29,6 @@ namespace BethanysPieShopHrm.App.Pages
 
             return base.OnInitializedAsync();
         }
-
-        [Parameter] public string EmployeeId { get; set; }
-
-        public Employee Employee { get; set; } = new();
-
-        public IEnumerable<Employee> Employees { get; set; }
-
-        private List<Country> Countries { get; set; }
-
-        private List<JobCategory> JobCategories { get; set; }
 
         private void InitializeJobCategories()
         {

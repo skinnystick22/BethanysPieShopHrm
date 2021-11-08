@@ -6,7 +6,7 @@ using BethanysPieShopHrmShared;
 
 namespace BethanysPieShopHrm.Api.Repository
 {
-    public class JobCategoryRepository: IJobCategoryRepository
+    public class JobCategoryRepository : IJobCategoryRepository
     {
         private readonly AppDbContext _appDbContext;
 

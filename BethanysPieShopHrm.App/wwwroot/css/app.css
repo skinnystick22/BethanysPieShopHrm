@@ -15,11 +15,17 @@ nav {
     border-color: #a593c2;
 }
 
-#logo { width: 80%; }
+#logo {
+    width: 80%;
+}
 
-#navbarSupportedContent { height: 80px; }
+#navbarSupportedContent {
+    height: 80px;
+}
 
-.navbar { padding: 0; }
+.navbar {
+    padding: 0;
+}
 
 .sidebar-logo {
     height: 80px;
@@ -43,7 +49,9 @@ nav {
     position: absolute;
 }
 
-.profile-bg { overflow: hidden; }
+.profile-bg {
+    overflow: hidden;
+}
 
 .profile-bg img {
     width: 250px;
@@ -61,7 +69,9 @@ nav {
     margin-top: 40px;
 }
 
-.circle { border-radius: 50%; }
+.circle {
+    border-radius: 50%;
+}
 
 .menu {
     position: absolute;
@@ -83,7 +93,9 @@ nav {
     font-size: 1.2rem;
 }
 
-#sidebar-wrapper .list-group { width: 15rem; }
+#sidebar-wrapper .list-group {
+    width: 15rem;
+}
 
 .list-group-item.active, .list-group-item.active:active, .list-group-item.active:focus, .list-group-item.active:visited {
     color: white;
@@ -97,21 +109,31 @@ nav {
     padding-left: 25px;
 }
 
-#page-content-wrapper { min-width: 100vw; }
+#page-content-wrapper {
+    min-width: 100vw;
+}
 
-.container-fluid { padding: 25px; }
+.container-fluid {
+    padding: 25px;
+}
 
-#wrapper.toggled #sidebar-wrapper { margin-left: 0; }
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+}
 
 @media (min-width: 768px) {
-    #sidebar-wrapper { margin-left: 0; }
+    #sidebar-wrapper {
+        margin-left: 0;
+    }
 
     #page-content-wrapper {
         min-width: 0;
         width: 100%;
     }
 
-    #wrapper.toggled #sidebar-wrapper { margin-left: -15rem; }
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: -15rem;
+    }
 }
 
 .page-title {
@@ -119,7 +141,9 @@ nav {
     font-size: 28px;
 }
 
-.table { background-color: white; }
+.table {
+    background-color: white;
+}
 
 .table-btn {
     background-color: #23cfa7;
@@ -145,7 +169,9 @@ nav {
     background-color: rgba(255, 255, 255, 0.6);
 }
 
-.employee-detail .form-group { margin-bottom: 0; }
+.employee-detail .form-group {
+    margin-bottom: 0;
+}
 
 .employee-detail-img {
     width: 150px;
@@ -170,7 +196,9 @@ nav {
     border-color: #a593c2;
 }
 
-.edit-outline-btn { border-color: #23cfa7; }
+.edit-outline-btn {
+    border-color: #23cfa7;
+}
 
 .edit-outline-btn:hover, .edit-outline-btn:active {
     color: #fff;
