@@ -32,7 +32,7 @@ namespace BethanysPieShopHrm.App.Pages
 
         private void InitializeJobCategories()
         {
-            JobCategories = new List<JobCategory>()
+            JobCategories = new List<JobCategory>
             {
                 new() { JobCategoryId = 1, JobCategoryName = "Pie research" },
                 new() { JobCategoryId = 2, JobCategoryName = "Sales" },
