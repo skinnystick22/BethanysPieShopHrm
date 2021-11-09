@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using BethanysPieShopHrmShared;
 
-namespace BethanysPieShopHrm.Api.Infrastructure
+namespace BethanysPieShopHrm.Api.Infrastructure;
+
+public interface IJobCategoryRepository
 {
-    public interface IJobCategoryRepository
-    {
-        IEnumerable<JobCategory> GetAllJobCategories();
-        JobCategory GetJobCategoryById(int jobCategoryId);
-    }
+    IEnumerable<JobCategory> GetAllJobCategories();
+    JobCategory GetJobCategoryById(int jobCategoryId);
 }

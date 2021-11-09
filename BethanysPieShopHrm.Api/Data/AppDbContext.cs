@@ -2,23 +2,22 @@
 using BethanysPieShopHrmShared;
 using Microsoft.EntityFrameworkCore;
 
-namespace BethanysPieShopHrm.Api.Data
+namespace BethanysPieShopHrm.Api.Data;
+
+public class AppDbContext : DbContext
 {
-    public class AppDbContext : DbContext
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
-        {
-        }
+    }
 
-        public DbSet<Employee> Employees { get; set; }
-        public DbSet<Country> Countries { get; set; }
-        public DbSet<JobCategory> JobCategories { get; set; }
+    public DbSet<Employee> Employees { get; set; }
+    public DbSet<Country> Countries { get; set; }
+    public DbSet<JobCategory> JobCategories { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
 
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-        }
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
 }

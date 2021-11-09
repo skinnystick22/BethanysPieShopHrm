@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using BethanysPieShopHrmShared;
 
-namespace BethanysPieShopHrm.Api.Infrastructure
+namespace BethanysPieShopHrm.Api.Infrastructure;
+
+public interface ICountryRepository
 {
-    public interface ICountryRepository
-    {
-        IEnumerable<Country> GetAllCountries();
-        Country GetCountryById(int countryId);
-    }
+    IEnumerable<Country> GetAllCountries();
+    Country GetCountryById(int countryId);
 }

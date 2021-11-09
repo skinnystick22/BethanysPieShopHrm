@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
 using BethanysPieShopHrmShared;
 
-namespace BethanysPieShopHrm.Api.Infrastructure
+namespace BethanysPieShopHrm.Api.Infrastructure;
+
+public interface IEmployeeRepository
 {
-    public interface IEmployeeRepository
-    {
-        IEnumerable<Employee> GetAllEmployees();
-        Employee GetEmployeeById(int employeeId);
-        Employee AddEmployee(Employee employee);
-        Employee UpdateEmployee(Employee employee);
-        void DeleteEmployee(int employeeId);
-    }
+    IEnumerable<Employee> GetAllEmployees();
+    Employee GetEmployeeById(int employeeId);
+    Employee AddEmployee(Employee employee);
+    Employee UpdateEmployee(Employee employee);
+    void DeleteEmployee(int employeeId);
 }
