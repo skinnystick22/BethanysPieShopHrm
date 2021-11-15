@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using BethanysPieShopHrm.Api.Data;
+﻿using BethanysPieShopHrm.Api.Data;
 using BethanysPieShopHrm.Api.Infrastructure;
 using BethanysPieShopHrmShared;
 

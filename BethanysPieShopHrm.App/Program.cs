@@ -1,8 +1,5 @@
-using System;
-using System.Threading.Tasks;
 using BethanysPieShopHrm.App.Service;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace BethanysPieShopHrm.App;
 

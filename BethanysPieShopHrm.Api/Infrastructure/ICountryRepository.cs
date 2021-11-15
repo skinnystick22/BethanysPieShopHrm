@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using BethanysPieShopHrmShared;
+﻿using BethanysPieShopHrmShared;
 
 namespace BethanysPieShopHrm.Api.Infrastructure;
 

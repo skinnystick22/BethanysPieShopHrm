@@ -1,5 +1,4 @@
-﻿using System;
-using BethanysPieShopHrmShared;
+﻿using BethanysPieShopHrmShared;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

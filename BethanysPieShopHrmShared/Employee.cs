@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BethanysPieShopHrmShared;
+﻿namespace BethanysPieShopHrmShared;
 
 public class Employee
 {

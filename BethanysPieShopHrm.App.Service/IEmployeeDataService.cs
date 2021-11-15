@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using BethanysPieShopHrmShared;
+﻿using BethanysPieShopHrmShared;
 
 namespace BethanysPieShopHrm.App.Service;
 
