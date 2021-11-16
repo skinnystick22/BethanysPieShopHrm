@@ -29,7 +29,7 @@ public class Startup
         services.AddScoped<IJobCategoryRepository, JobCategoryRepository>();
 
         services.AddCors(options =>
-            options.AddPolicy("Open", builder => builder.AllowAnyOrigin().AllowAnyHeader()));
+            options.AddPolicy("Open", builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
 
         services.AddControllers();
         services.AddSwaggerGen(c =>
