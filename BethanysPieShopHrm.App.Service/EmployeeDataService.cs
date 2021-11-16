@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Text;
+using System.Text.Json;
 using BethanysPieShopHrmShared;
 
 namespace BethanysPieShopHrm.App.Service;
@@ -30,16 +31,27 @@ public class EmployeeDataService : IEmployeeDataService
 
     public async Task<Employee> AddEmployee(Employee employee)
     {
-        throw new NotImplementedException();
+        var employeeJson = new StringContent(JsonSerializer.Serialize(employee), Encoding.UTF8, "application/json");
+
+        var response = await _httpClient.PostAsync("api/Employee", employeeJson);
+
+        if (response.IsSuccessStatusCode)
+        {
+            return await JsonSerializer.DeserializeAsync<Employee>(await response.Content.ReadAsStreamAsync());
+        }
+
+        return null;
     }
 
     public async Task UpdateEmployee(Employee employee)
     {
-        throw new NotImplementedException();
+        var employeeJson = new StringContent(JsonSerializer.Serialize(employee), Encoding.UTF8, "application/json");
+
+        await _httpClient.PutAsync("api/Employee", employeeJson);
     }
 
     public async Task DeleteEmployee(int employeeId)
     {
-        throw new NotImplementedException();
+        await _httpClient.DeleteAsync($"api/Employee/{employeeId}");
     }
 }

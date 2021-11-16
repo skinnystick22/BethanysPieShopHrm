@@ -34,31 +34,29 @@ public class EmployeeRepository : IEmployeeRepository
     {
         var foundEmployee = _appDbContext.Employees.FirstOrDefault(e => e.EmployeeId == employee.EmployeeId);
 
-        if (foundEmployee != null)
-        {
-            foundEmployee.CountryId = employee.CountryId;
-            foundEmployee.MaritalStatus = employee.MaritalStatus;
-            foundEmployee.BirthDate = employee.BirthDate;
-            foundEmployee.City = employee.City;
-            foundEmployee.Email = employee.Email;
-            foundEmployee.FirstName = employee.FirstName;
-            foundEmployee.LastName = employee.LastName;
-            foundEmployee.Gender = employee.Gender;
-            foundEmployee.PhoneNumber = employee.PhoneNumber;
-            foundEmployee.Smoker = employee.Smoker;
-            foundEmployee.Street = employee.Street;
-            foundEmployee.Zip = employee.Zip;
-            foundEmployee.JobCategoryId = employee.JobCategoryId;
-            foundEmployee.Comment = employee.Comment;
-            foundEmployee.ExitDate = employee.ExitDate;
-            foundEmployee.JoinedDate = employee.JoinedDate;
+        if (foundEmployee == null) return null;
 
-            _appDbContext.SaveChanges();
+        foundEmployee.CountryId = employee.CountryId;
+        foundEmployee.MaritalStatus = employee.MaritalStatus;
+        foundEmployee.BirthDate = employee.BirthDate;
+        foundEmployee.City = employee.City;
+        foundEmployee.Email = employee.Email;
+        foundEmployee.FirstName = employee.FirstName;
+        foundEmployee.LastName = employee.LastName;
+        foundEmployee.Gender = employee.Gender;
+        foundEmployee.PhoneNumber = employee.PhoneNumber;
+        foundEmployee.Smoker = employee.Smoker;
+        foundEmployee.Street = employee.Street;
+        foundEmployee.Zip = employee.Zip;
+        foundEmployee.JobCategoryId = employee.JobCategoryId;
+        foundEmployee.Comment = employee.Comment;
+        foundEmployee.ExitDate = employee.ExitDate;
+        foundEmployee.JoinedDate = employee.JoinedDate;
 
-            return foundEmployee;
-        }
+        _appDbContext.SaveChanges();
 
-        return null;
+        return foundEmployee;
+
     }
 
     public void DeleteEmployee(int employeeId)

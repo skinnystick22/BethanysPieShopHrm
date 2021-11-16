@@ -21,7 +21,7 @@ public class EmployeeController : Controller
         return Ok(_employeeRepository.GetAllEmployees());
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{id:int}")]
     public IActionResult GetEmployeeById(int id)
     {
         return Ok(_employeeRepository.GetEmployeeById(id));
@@ -41,7 +41,7 @@ public class EmployeeController : Controller
 
         var createdEmployee = _employeeRepository.AddEmployee(employee);
 
-        return Created("employee", createdEmployee);
+        return Created("api/Employee", createdEmployee);
     }
 
     [HttpPut]
@@ -66,7 +66,7 @@ public class EmployeeController : Controller
         return NoContent(); //success
     }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("{id:int}")]
     public IActionResult DeleteEmployee(int id)
     {
         if (id == 0)
