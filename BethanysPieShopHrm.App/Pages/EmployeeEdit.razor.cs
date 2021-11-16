@@ -9,6 +9,7 @@ public partial class EmployeeEdit
     [Inject] public IEmployeeDataService EmployeeDataService { get; set; }
     [Inject] public ICountryDataService CountryDataService { get; set; }
     [Inject] public IJobCategoryDataService JobCategoryDataService { get; set; }
+    [Inject] public NavigationManager NavigationManager { get; set; }
 
     [Parameter] public string EmployeeId { get; set; }
 
@@ -86,5 +87,19 @@ public partial class EmployeeEdit
     {
         StatusClass = "alert-danger";
         Message = "There are some validation errors. Please try again";
+    }
+
+    private async Task DeleteEmployee()
+    {
+        await EmployeeDataService.DeleteEmployee(Employee.EmployeeId);
+
+        StatusClass = "alert-success";
+        Message = "Deleted successfully";
+        Saved = true;
+    }
+
+    private void NavigateToOverview()
+    {
+        NavigationManager.NavigateTo($"/{nameof(EmployeeOverview)}");
     }
 }
