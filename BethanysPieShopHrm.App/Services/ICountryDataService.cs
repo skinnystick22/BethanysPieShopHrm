@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using BethanysPieShopHRM.Shared;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
-using BethanysPieShopHRM.Shared;
 
-namespace BethanysPieShopHRM.App.Services;
-
-public interface ICountryDataService
+namespace BethanysPieShopHRM.App.Services
 {
-    Task<IEnumerable<Country>> GetAllCountries();
-    Task<Country> GetCountryById(int countryId);
+    public interface ICountryDataService
+    {
+        Task<IEnumerable<Country>> GetAllCountries();
+        Task<Country> GetCountryById(int countryId);
+    }
 }

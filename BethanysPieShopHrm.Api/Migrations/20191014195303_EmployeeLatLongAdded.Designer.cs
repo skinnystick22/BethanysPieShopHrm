@@ -7,30 +7,26 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-#nullable disable
-
 namespace BethanysPieShopHRM.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20211125183838_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20191014195303_EmployeeLatLongAdded")]
+    partial class EmployeeLatLongAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.0")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
-
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+                .HasAnnotation("ProductVersion", "3.0.0")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("BethanysPieShopHRM.Shared.Country", b =>
                 {
                     b.Property<int>("CountryId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CountryId"), 1L, 1);
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -91,9 +87,8 @@ namespace BethanysPieShopHRM.Api.Migrations
                 {
                     b.Property<int>("EmployeeId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmployeeId"), 1L, 1);
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
@@ -102,8 +97,8 @@ namespace BethanysPieShopHRM.Api.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Comment")
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
+                        .HasColumnType("nvarchar(1000)")
+                        .HasMaxLength(1000);
 
                     b.Property<int>("CountryId")
                         .HasColumnType("int");
@@ -117,8 +112,8 @@ namespace BethanysPieShopHRM.Api.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<int>("Gender")
                         .HasColumnType("int");
@@ -131,8 +126,8 @@ namespace BethanysPieShopHRM.Api.Migrations
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<double>("Latitude")
                         .HasColumnType("float");
@@ -184,27 +179,6 @@ namespace BethanysPieShopHRM.Api.Migrations
                             Smoker = false,
                             Street = "Grote Markt 1",
                             Zip = "1000"
-                        },
-                        new
-                        {
-                            EmployeeId = 2,
-                            BirthDate = new DateTime(1979, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            City = "Antwerp",
-                            Comment = "Lorem Ipsum",
-                            CountryId = 2,
-                            Email = "gill@bethanyspieshop.com",
-                            FirstName = "Gill",
-                            Gender = 0,
-                            JobCategoryId = 1,
-                            JoinedDate = new DateTime(2017, 12, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastName = "Cleeren",
-                            Latitude = 50.850299999999997,
-                            Longitude = 4.3517000000000001,
-                            MaritalStatus = 0,
-                            PhoneNumber = "33999909923",
-                            Smoker = false,
-                            Street = "New Street",
-                            Zip = "2000"
                         });
                 });
 
@@ -212,9 +186,8 @@ namespace BethanysPieShopHRM.Api.Migrations
                 {
                     b.Property<int>("JobCategoryId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("JobCategoryId"), 1L, 1);
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("JobCategoryName")
                         .HasColumnType("nvarchar(max)");
@@ -284,10 +257,6 @@ namespace BethanysPieShopHRM.Api.Migrations
                         .HasForeignKey("JobCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Country");
-
-                    b.Navigation("JobCategory");
                 });
 #pragma warning restore 612, 618
         }

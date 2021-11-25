@@ -2,24 +2,25 @@
 using System.Linq;
 using BethanysPieShopHRM.Shared;
 
-namespace BethanysPieShopHRM.Api.Models;
-
-public class CountryRepository : ICountryRepository
+namespace BethanysPieShopHRM.Api.Models
 {
-    private readonly AppDbContext _appDbContext;
-
-    public CountryRepository(AppDbContext appDbContext)
+    public class CountryRepository : ICountryRepository
     {
-        _appDbContext = appDbContext;
-    }
+        private readonly AppDbContext _appDbContext;
 
-    public IEnumerable<Country> GetAllCountries()
-    {
-        return _appDbContext.Countries;
-    }
+        public CountryRepository(AppDbContext appDbContext)
+        {
+            _appDbContext = appDbContext;
+        }
 
-    public Country GetCountryById(int countryId)
-    {
-        return _appDbContext.Countries.FirstOrDefault(c => c.CountryId == countryId);
+        public IEnumerable<Country> GetAllCountries()
+        {
+            return _appDbContext.Countries;
+        }
+
+        public Country GetCountryById(int countryId)
+        {
+            return _appDbContext.Countries.FirstOrDefault(c => c.CountryId == countryId);
+        }
     }
 }

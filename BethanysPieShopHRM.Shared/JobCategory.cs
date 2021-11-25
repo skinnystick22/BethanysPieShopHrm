@@ -1,7 +1,8 @@
-﻿namespace BethanysPieShopHRM.Shared;
-
-public class JobCategory
+﻿namespace BethanysPieShopHRM.Shared
 {
-    public int JobCategoryId { get; set; }
-    public string JobCategoryName { get; set; }
+    public class JobCategory
+    {
+        public int JobCategoryId { get; set; }
+        public string JobCategoryName { get; set; }
+    }
 }

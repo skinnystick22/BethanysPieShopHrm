@@ -1,13 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using BethanysPieShopHRM.Shared;
 
-namespace BethanysPieShopHRM.Api.Models;
-
-public interface IEmployeeRepository
+namespace BethanysPieShopHRM.Api.Models
 {
-    IEnumerable<Employee> GetAllEmployees();
-    Employee GetEmployeeById(int employeeId);
-    Employee AddEmployee(Employee employee);
-    Employee UpdateEmployee(Employee employee);
-    void DeleteEmployee(int employeeId);
+    public interface IEmployeeRepository
+    {
+        IEnumerable<Employee> GetAllEmployees();
+        Employee GetEmployeeById(int employeeId);
+        Employee AddEmployee(Employee employee);
+        Employee UpdateEmployee(Employee employee);
+        void DeleteEmployee(int employeeId);
+    }
 }

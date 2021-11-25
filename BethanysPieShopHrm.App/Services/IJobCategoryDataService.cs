@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using BethanysPieShopHRM.Shared;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
-using BethanysPieShopHRM.Shared;
 
-namespace BethanysPieShopHRM.App.Services;
-
-public interface IJobCategoryDataService
+namespace BethanysPieShopHRM.App.Services
 {
-    Task<IEnumerable<JobCategory>> GetAllJobCategories();
-    Task<JobCategory> GetJobCategoryById(int jobCategoryId);
+    public interface IJobCategoryDataService
+    {
+        Task<IEnumerable<JobCategory>> GetAllJobCategories();
+        Task<JobCategory> GetJobCategoryById(int jobCategoryId);
+    }
 }

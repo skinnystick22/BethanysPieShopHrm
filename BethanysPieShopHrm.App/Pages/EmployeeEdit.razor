@@ -1,5 +1,6 @@
 ﻿@page "/employeeedit"
 @page "/employeeedit/{EmployeeId}"
+
 @using BethanysPieShopHRM.Shared
 
 @if (!Saved)
@@ -8,18 +9,18 @@
         <h1 class="page-title">Details for @Employee.FirstName @Employee.LastName</h1>
         <EditForm Model="@Employee" OnValidSubmit="@HandleValidSubmit"
                   OnInvalidSubmit="@HandleInvalidSubmit">
-            <DataAnnotationsValidator/>
+            <DataAnnotationsValidator />
             <ValidationSummary></ValidationSummary>
             <div class="form-group row">
                 <label for="lastName" class="col-sm-3">Last name: </label>
                 <InputText id="lastName" class="form-control col-sm-8" @bind-Value="@Employee.LastName" placeholder="Enter last name"></InputText>
-                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.LastName)"/>
+                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.LastName)" />
             </div>
 
             <div class="form-group row">
                 <label for="firstName" class="col-sm-3">First name: </label>
                 <InputText id="firstName" class="form-control col-sm-8" @bind-Value="@Employee.FirstName" placeholder="Enter first name"></InputText>
-                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.FirstName)"/>
+                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.FirstName)" />
             </div>
 
 
@@ -31,7 +32,7 @@
             <div class="form-group row">
                 <label for="email" class="col-sm-3">Email: </label>
                 <InputText id="email" class="form-control col-sm-8" @bind-Value="@Employee.Email" placeholder="Enter email"></InputText>
-                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.Email)"/>
+                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.Email)" />
             </div>
 
             <div class="form-group row">
@@ -56,9 +57,9 @@
                 <label for="country" class="col-sm-3">Country: </label>
                 <InputSelect id="country" class="form-control col-sm-8" @bind-Value="@CountryId">
                     @foreach (var country in Countries)
-                    {
+                        {
                         <option value="@country.CountryId">@country.Name</option>
-                    }
+                        }
                 </InputSelect>
             </div>
 
@@ -88,9 +89,9 @@
                 <label for="jobcategory" class="col-sm-3">Job category: </label>
                 <InputSelect id="jobcategory" class="form-control col-sm-8" @bind-Value="@JobCategoryId">
                     @foreach (var jobCategory in JobCategories)
-                    {
+                        {
                         <option value="@jobCategory.JobCategoryId">@jobCategory.JobCategoryName</option>
-                    }
+                        }
                 </InputSelect>
             </div>
 
@@ -125,7 +126,7 @@
             <div class="form-group row">
                 <label for="comment" class="col-sm-3">Comment: </label>
                 <InputTextArea id="comment" class="form-control col-sm-8" @bind-Value="@Employee.Comment" placeholder="Enter comment"></InputTextArea>
-                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.Comment)"/>
+                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.Comment)" />
             </div>
 
             <button type="submit" class="btn btn-primary edit-btn">Save employee</button>
@@ -140,8 +141,11 @@
             <a class="btn btn-outline-primary" @onclick="@NavigateToOverview">Back to overview</a>
         </EditForm>
     </section>
+
 }
 else
 {
     <div class="alert @StatusClass">@Message</div>
+
+
 }

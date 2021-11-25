@@ -3,26 +3,28 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace BethanysPieShopHRM.Api;
-
-public class Program
+namespace BethanysPieShopHRM.Api
 {
-    public static void Main(string[] args)
+    public class Program
     {
-        var host = CreateHostBuilder(args).Build();
-
-        using (var scope = host.Services.CreateScope())
+        public static void Main(string[] args)
         {
-            using var context = scope.ServiceProvider.GetService<AppDbContext>();
-            context.Database.EnsureCreated();
+            var host = CreateHostBuilder(args).Build();
+
+            using (var scope = host.Services.CreateScope())
+            {
+                using var context = scope.ServiceProvider.GetService<AppDbContext>();
+                context.Database.EnsureCreated();
+            }
+
+            host.Run();
         }
 
-        host.Run();
-    }
-
-    public static IHostBuilder CreateHostBuilder(string[] args)
-    {
-        return Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
     }
 }
