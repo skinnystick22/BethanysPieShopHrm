@@ -82,7 +82,7 @@ namespace BethanysPieShopHRM.Api.Controllers
 
             _employeeRepository.DeleteEmployee(id);
 
-            return NoContent();//success
+            return NoContent(); //success
         }
     }
 }

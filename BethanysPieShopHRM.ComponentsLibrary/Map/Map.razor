@@ -11,11 +11,11 @@
 @code {
 
     string elementId = $"map-{Guid.NewGuid().ToString("D")}";
-    
-    [Parameter] 
+
+    [Parameter]
     public double Zoom { get; set; }
 
-    [Parameter] 
+    [Parameter]
     public List<Marker> Markers { get; set; }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -25,4 +25,5 @@
             elementId,
             Markers);
     }
+
 }

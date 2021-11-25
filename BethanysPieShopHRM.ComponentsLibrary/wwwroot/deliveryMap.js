@@ -1,10 +1,11 @@
-﻿(function () {
+﻿(function() {
     var tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-    var tileAttribution = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>';
+    var tileAttribution =
+        'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>';
 
     // Global export
     window.deliveryMap = {
-        showOrUpdate: function (elementId, markers) {
+        showOrUpdate: function(elementId, markers) {
             var elem = document.getElementById(elementId);
             if (!elem) {
                 throw new Error('No element with ID ' + elementId);

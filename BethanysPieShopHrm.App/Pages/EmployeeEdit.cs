@@ -10,18 +10,13 @@ namespace BethanysPieShopHRM.App.Pages
 {
     public partial class EmployeeEdit
     {
-        [Inject]
-        public IEmployeeDataService EmployeeDataService { get; set; }
-        [Inject]
-        public ICountryDataService CountryDataService { get; set; }
-        [Inject]
-        public IJobCategoryDataService JobCategoryDataService { get; set; }
+        [Inject] public IEmployeeDataService EmployeeDataService { get; set; }
+        [Inject] public ICountryDataService CountryDataService { get; set; }
+        [Inject] public IJobCategoryDataService JobCategoryDataService { get; set; }
 
-        [Parameter]
-        public string EmployeeId { get; set; }
+        [Parameter] public string EmployeeId { get; set; }
 
-        [Inject]
-        public NavigationManager NavigationManager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; }
 
         public Employee Employee { get; set; } = new Employee();
         public List<Country> Countries { get; set; } = new List<Country>();
@@ -47,7 +42,8 @@ namespace BethanysPieShopHRM.App.Pages
             if (employeeId == 0) //new employee is being created
             {
                 //add some defaults
-                Employee = new Employee { CountryId = 1, JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now };
+                Employee = new Employee
+                    {CountryId = 1, JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now};
             }
             else
             {

@@ -10,16 +10,14 @@ namespace BethanysPieShopHRM.App.Components
 {
     public partial class AddEmployeeDialog
     {
-        public Employee Employee { get; set; } = 
-            new Employee { CountryId = 1, JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now };
+        public Employee Employee { get; set; } =
+            new Employee {CountryId = 1, JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now};
 
-        [Inject]
-        public IEmployeeDataService EmployeeDataService { get; set; }
+        [Inject] public IEmployeeDataService EmployeeDataService { get; set; }
 
         public bool ShowDialog { get; set; }
 
-        [Parameter]
-        public EventCallback<bool> CloseEventCallback { get; set; }
+        [Parameter] public EventCallback<bool> CloseEventCallback { get; set; }
 
         public void Show()
         {
@@ -36,7 +34,8 @@ namespace BethanysPieShopHRM.App.Components
 
         private void ResetDialog()
         {
-            Employee = new Employee { CountryId = 1, JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now };
+            Employee = new Employee
+                {CountryId = 1, JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now};
         }
 
         protected async Task HandleValidSubmit()
