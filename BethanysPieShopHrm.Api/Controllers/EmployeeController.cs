@@ -1,8 +1,8 @@
-﻿using BethanysPieShopHrm.Api.Infrastructure;
-using BethanysPieShopHrmShared;
+﻿using BethanysPieShopHRM.Api.Models;
+using BethanysPieShopHRM.Shared;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BethanysPieShopHrm.Api.Controllers;
+namespace BethanysPieShopHRM.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -21,7 +21,7 @@ public class EmployeeController : Controller
         return Ok(_employeeRepository.GetAllEmployees());
     }
 
-    [HttpGet("{id:int}")]
+    [HttpGet("{id}")]
     public IActionResult GetEmployeeById(int id)
     {
         return Ok(_employeeRepository.GetEmployeeById(id));
@@ -41,7 +41,7 @@ public class EmployeeController : Controller
 
         var createdEmployee = _employeeRepository.AddEmployee(employee);
 
-        return Created("api/Employee", createdEmployee);
+        return Created("employee", createdEmployee);
     }
 
     [HttpPut]
@@ -66,7 +66,7 @@ public class EmployeeController : Controller
         return NoContent(); //success
     }
 
-    [HttpDelete("{id:int}")]
+    [HttpDelete("{id}")]
     public IActionResult DeleteEmployee(int id)
     {
         if (id == 0)

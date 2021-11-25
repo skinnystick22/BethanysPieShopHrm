@@ -1,16 +1,15 @@
-﻿using BethanysPieShopHrm.App.Service;
-using BethanysPieShopHrmShared;
+﻿using System.Threading.Tasks;
+using BethanysPieShopHRM.App.Services;
+using BethanysPieShopHRM.Shared;
 using Microsoft.AspNetCore.Components;
 
-namespace BethanysPieShopHrm.App.Pages;
+namespace BethanysPieShopHRM.App.Pages;
 
 public partial class EmployeeDetail
 {
-    [Inject] public IEmployeeDataService EmployeeDataService { get; set; }
-
     [Parameter] public string EmployeeId { get; set; }
-
-    public Employee Employee { get; set; }
+    public Employee Employee { get; set; } = new();
+    [Inject] public IEmployeeDataService EmployeeDataService { get; set; }
 
     protected override async Task OnInitializedAsync()
     {

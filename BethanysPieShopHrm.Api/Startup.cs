@@ -1,11 +1,12 @@
-using System.Reflection;
-using BethanysPieShopHrm.Api.Data;
-using BethanysPieShopHrm.Api.Infrastructure;
-using BethanysPieShopHrm.Api.Repository;
+using BethanysPieShopHRM.Api.Models;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
-namespace BethanysPieShopHrm.Api;
+namespace BethanysPieShopHRM.Api;
 
 public class Startup
 {
@@ -19,34 +20,27 @@ public class Startup
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+        //services.AddDbContext<AppDbContext>(options => options.UseInMemoryDatabase(databaseName: "BethanysPieShopHRM"));
+
         services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
-                sql => sql.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName))
-        );
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
         services.AddScoped<ICountryRepository, CountryRepository>();
-        services.AddScoped<IEmployeeRepository, EmployeeRepository>();
         services.AddScoped<IJobCategoryRepository, JobCategoryRepository>();
+        services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
         services.AddCors(options =>
-            options.AddPolicy("Open", builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
+        {
+            options.AddPolicy("Open", builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+        });
 
         services.AddControllers();
-        services.AddSwaggerGen(c =>
-        {
-            c.SwaggerDoc("v1", new OpenApiInfo {Title = "BethanysPieShopHrm.Api", Version = "v1"});
-        });
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
-        if (env.IsDevelopment())
-        {
-            app.UseDeveloperExceptionPage();
-            app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BethanysPieShopHrm.Api v1"));
-        }
+        if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
         app.UseHttpsRedirection();
 

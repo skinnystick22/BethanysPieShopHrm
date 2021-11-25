@@ -1,70 +1,67 @@
-﻿using BethanysPieShopHrm.App.Service;
-using BethanysPieShopHrmShared;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using BethanysPieShopHRM.App.Services;
+using BethanysPieShopHRM.Shared;
 using Microsoft.AspNetCore.Components;
 
-namespace BethanysPieShopHrm.App.Pages;
+namespace BethanysPieShopHRM.App.Pages;
 
 public partial class EmployeeEdit
 {
+    protected string CountryId = string.Empty;
+    protected string JobCategoryId = string.Empty;
+
+    //used to store state of screen
+    protected string Message = string.Empty;
+    protected bool Saved;
+    protected string StatusClass = string.Empty;
     [Inject] public IEmployeeDataService EmployeeDataService { get; set; }
     [Inject] public ICountryDataService CountryDataService { get; set; }
     [Inject] public IJobCategoryDataService JobCategoryDataService { get; set; }
-    [Inject] public NavigationManager NavigationManager { get; set; }
 
     [Parameter] public string EmployeeId { get; set; }
 
-    public Employee Employee { get; set; } = new();
+    [Inject] public NavigationManager NavigationManager { get; set; }
 
+    public Employee Employee { get; set; } = new();
     public List<Country> Countries { get; set; } = new();
     public List<JobCategory> JobCategories { get; set; } = new();
-
-    public string CountryId { get; set; }
-    public string JobCategoryId { get; set; }
-
-    public string Message { get; set; }
-    public string StatusClass { get; set; }
-    public bool Saved { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
         Saved = false;
+        Countries = (await CountryDataService.GetAllCountries()).ToList();
+        //Employee = await EmployeeDataService.GetEmployeeDetails(int.Parse(EmployeeId));
+        JobCategories = (await JobCategoryDataService.GetAllJobCategories()).ToList();
 
         int.TryParse(EmployeeId, out var employeeId);
 
-        if (employeeId == 0)
-        {
+        if (employeeId == 0) //new employee is being created
+            //add some defaults
             Employee = new Employee
-            {
-                CountryId = 1,
-                JobCategoryId = 1,
-                BirthDate = DateTime.Now,
-                JoinedDate = DateTime.Now
-            };
-        }
+                {CountryId = 1, JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now};
         else
-        {
-            Employee = await EmployeeDataService.GetEmployeeDetails(employeeId);
-        }
+            Employee = await EmployeeDataService.GetEmployeeDetails(int.Parse(EmployeeId));
 
-        Countries = (await CountryDataService.GetAllCountries()).ToList();
         CountryId = Employee.CountryId.ToString();
-        JobCategories = (await JobCategoryDataService.GetAllJobCategories()).ToList();
         JobCategoryId = Employee.JobCategoryId.ToString();
     }
 
-    private async Task HandleValidSubmit()
+    protected async Task HandleValidSubmit()
     {
         Saved = false;
         Employee.CountryId = int.Parse(CountryId);
         Employee.JobCategoryId = int.Parse(JobCategoryId);
 
-        if (Employee.EmployeeId == 0)
+        if (Employee.EmployeeId == 0) //new
         {
             var addedEmployee = await EmployeeDataService.AddEmployee(Employee);
             if (addedEmployee != null)
             {
                 StatusClass = "alert-success";
-                Message = "New Employee added Successfully.";
+                Message = "New employee added successfully.";
                 Saved = true;
             }
             else
@@ -83,23 +80,24 @@ public partial class EmployeeEdit
         }
     }
 
-    private void HandleInvalidSubmit()
+    protected void HandleInvalidSubmit()
     {
         StatusClass = "alert-danger";
-        Message = "There are some validation errors. Please try again";
+        Message = "There are some validation errors. Please try again.";
     }
 
-    private async Task DeleteEmployee()
+    protected async Task DeleteEmployee()
     {
         await EmployeeDataService.DeleteEmployee(Employee.EmployeeId);
 
         StatusClass = "alert-success";
         Message = "Deleted successfully";
+
         Saved = true;
     }
 
-    private void NavigateToOverview()
+    protected void NavigateToOverview()
     {
-        NavigationManager.NavigateTo($"/{nameof(EmployeeOverview)}");
+        NavigationManager.NavigateTo("/employeeoverview");
     }
 }

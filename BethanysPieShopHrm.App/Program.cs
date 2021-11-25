@@ -1,23 +1,25 @@
-using BethanysPieShopHrm.App.Service;
+using System;
+using System.Threading.Tasks;
+using BethanysPieShopHRM.App.Services;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace BethanysPieShopHrm.App;
+namespace BethanysPieShopHRM.App;
 
 public class Program
 {
-    private const string BaseUrl = "https://localhost:5002/";
-
     public static async Task Main(string[] args)
     {
         var builder = WebAssemblyHostBuilder.CreateDefault(args);
-        builder.RootComponents.Add<App>("#app");
+        builder.RootComponents.Add<App>("app");
 
-        builder.Services.AddHttpClient<IEmployeeDataService, EmployeeDataService>(nameof(EmployeeDataService),
-            client => client.BaseAddress = new Uri(BaseUrl));
-        builder.Services.AddHttpClient<ICountryDataService, CountryDataService>(nameof(CountryDataService),
-            client => client.BaseAddress = new Uri(BaseUrl));
-        builder.Services.AddHttpClient<IJobCategoryDataService, JobCategoryDataService>(nameof(JobCategoryDataService),
-            client => client.BaseAddress = new Uri(BaseUrl));
+        //builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+        builder.Services.AddHttpClient<IEmployeeDataService, EmployeeDataService>(client =>
+            client.BaseAddress = new Uri("https://localhost:44340/"));
+        builder.Services.AddHttpClient<ICountryDataService, CountryDataService>(client =>
+            client.BaseAddress = new Uri("https://localhost:44340/"));
+        builder.Services.AddHttpClient<IJobCategoryDataService, JobCategoryDataService>(client =>
+            client.BaseAddress = new Uri("https://localhost:44340/"));
 
         await builder.Build().RunAsync();
     }

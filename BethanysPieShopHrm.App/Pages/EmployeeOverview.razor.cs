@@ -1,8 +1,11 @@
-﻿using BethanysPieShopHrm.App.Service;
-using BethanysPieShopHrmShared;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using BethanysPieShopHRM.App.Services;
+using BethanysPieShopHRM.Shared;
 using Microsoft.AspNetCore.Components;
 
-namespace BethanysPieShopHrm.App.Pages;
+namespace BethanysPieShopHRM.App.Pages;
 
 public partial class EmployeeOverview
 {
@@ -12,6 +15,6 @@ public partial class EmployeeOverview
 
     protected override async Task OnInitializedAsync()
     {
-        Employees = await EmployeeDataService.GetAllEmployees();
+        Employees = (await EmployeeDataService.GetAllEmployees()).ToList();
     }
 }
