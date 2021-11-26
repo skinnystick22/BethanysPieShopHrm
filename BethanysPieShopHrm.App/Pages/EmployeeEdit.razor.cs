@@ -5,11 +5,14 @@ using System.Threading.Tasks;
 using BethanysPieShopHRM.App.Services;
 using BethanysPieShopHRM.Shared;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
 
 namespace BethanysPieShopHRM.App.Pages;
 
 public partial class EmployeeEdit
 {
+    private IReadOnlyList<IBrowserFile> _selectedFiles;
+
     protected string CountryId = string.Empty;
     protected string JobCategoryId = string.Empty;
 
@@ -99,5 +102,12 @@ public partial class EmployeeEdit
     protected void NavigateToOverview()
     {
         NavigationManager.NavigateTo("/employeeoverview");
+    }
+
+    private void OnInputFileChange(InputFileChangeEventArgs e)
+    {
+        _selectedFiles = e.GetMultipleFiles();
+        Message = $"{_selectedFiles.Count} file(s) selected";
+        StateHasChanged();
     }
 }

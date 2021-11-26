@@ -1,5 +1,7 @@
 ﻿using BethanysPieShopHRM.Api.Models;
 using BethanysPieShopHRM.Shared;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BethanysPieShopHRM.Api.Controllers;
@@ -9,10 +11,15 @@ namespace BethanysPieShopHRM.Api.Controllers;
 public class EmployeeController : Controller
 {
     private readonly IEmployeeRepository _employeeRepository;
+    private readonly IWebHostEnvironment _webHostEnvironment;
+    private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public EmployeeController(IEmployeeRepository employeeRepository)
+    public EmployeeController(IEmployeeRepository employeeRepository, IWebHostEnvironment webHostEnvironment,
+        IHttpContextAccessor httpContextAccessor)
     {
         _employeeRepository = employeeRepository;
+        _webHostEnvironment = webHostEnvironment;
+        _httpContextAccessor = httpContextAccessor;
     }
 
     [HttpGet]
@@ -38,6 +45,8 @@ public class EmployeeController : Controller
 
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
+
+        employee.ImageName = SaveEmployeeImageToDisk(employee);
 
         var createdEmployee = _employeeRepository.AddEmployee(employee);
 
@@ -79,5 +88,15 @@ public class EmployeeController : Controller
         _employeeRepository.DeleteEmployee(id);
 
         return NoContent(); //success
+    }
+
+    private string SaveEmployeeImageToDisk(Employee employee)
+    {
+        var currentUrl = _httpContextAccessor.HttpContext.Request.Host.Value;
+        var path = $"{_webHostEnvironment.WebRootPath}\\uploads\\{employee.ImageName}";
+        var fileStream = System.IO.File.Create(path);
+        fileStream.Write(employee.ImageContent, 0, employee.ImageContent.Length);
+        fileStream.Close();
+        return $"https://{currentUrl}/uploads/{employee.ImageName}";
     }
 }

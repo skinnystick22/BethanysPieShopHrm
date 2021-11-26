@@ -1,6 +1,7 @@
 using BethanysPieShopHRM.Api.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,6 +30,8 @@ public class Startup
         services.AddScoped<IJobCategoryRepository, JobCategoryRepository>();
         services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
+        services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
         services.AddCors(options =>
         {
             options.AddPolicy("Open", builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
@@ -42,6 +45,8 @@ public class Startup
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
         if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
+
+        app.UseStaticFiles();
 
         app.UseHttpsRedirection();
 
