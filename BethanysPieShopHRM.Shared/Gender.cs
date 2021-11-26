@@ -1,9 +1,8 @@
-﻿namespace BethanysPieShopHRM.Shared
+﻿namespace BethanysPieShopHRM.Shared;
+
+public enum Gender
 {
-    public enum Gender
-    {
-        Male,
-        Female,
-        Other
-    }
+    Male,
+    Female,
+    Other
 }

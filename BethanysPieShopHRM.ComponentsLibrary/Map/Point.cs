@@ -1,9 +1,8 @@
-﻿namespace BethanysPieShopHRM.ComponentsLibrary.Map
-{
-    public class Point
-    {
-        public double X { get; set; }
+﻿namespace BethanysPieShopHRM.ComponentsLibrary.Map;
 
-        public double Y { get; set; }
-    }
+public class Point
+{
+    public double X { get; set; }
+
+    public double Y { get; set; }
 }

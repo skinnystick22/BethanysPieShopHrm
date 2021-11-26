@@ -1,33 +1,32 @@
-﻿using BethanysPieShopHRM.App.Services;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using BethanysPieShopHRM.App.Services;
 using BethanysPieShopHRM.ComponentsLibrary.Map;
 using BethanysPieShopHRM.Shared;
 using Microsoft.AspNetCore.Components;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace BethanysPieShopHRM.App.Pages
+namespace BethanysPieShopHRM.App.Pages;
+
+public partial class EmployeeDetail
 {
-    public partial class EmployeeDetail
+    [Parameter] public string EmployeeId { get; set; }
+
+    public Employee Employee { get; set; } = new();
+
+    public List<Marker> MapMarkers { get; set; } = new();
+
+    [Inject] public IEmployeeDataService EmployeeDataService { get; set; }
+
+    protected override async Task OnInitializedAsync()
     {
-        [Parameter] public string EmployeeId { get; set; }
-
-        public Employee Employee { get; set; } = new Employee();
-
-        public List<Marker> MapMarkers { get; set; } = new List<Marker>();
-
-        [Inject] public IEmployeeDataService EmployeeDataService { get; set; }
-
-        protected async override Task OnInitializedAsync()
+        Employee = await EmployeeDataService.GetEmployeeDetails(int.Parse(EmployeeId));
+        MapMarkers = new List<Marker>
         {
-            Employee = await EmployeeDataService.GetEmployeeDetails(int.Parse(EmployeeId));
-            MapMarkers = new List<Marker>
+            new()
             {
-                new Marker
-                {
-                    Description = $"{Employee.FirstName} {Employee.LastName}", ShowPopup = false,
-                    X = Employee.Longitude, Y = Employee.Latitude
-                }
-            };
-        }
+                Description = $"{Employee.FirstName} {Employee.LastName}", ShowPopup = false,
+                X = Employee.Longitude, Y = Employee.Latitude
+            }
+        };
     }
 }

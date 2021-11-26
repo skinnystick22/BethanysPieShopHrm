@@ -9,10 +9,10 @@
 
 
 body {
-    overflow-x: hidden;
     background-image: url('../images/pattern.png');
     background-repeat: repeat;
     font-family: 'Ubuntu', sans-serif;
+    overflow-x: hidden;
 }
 
 nav {
@@ -27,9 +27,9 @@ nav {
 .navbar { padding: 0; }
 
 .sidebar-logo {
-    height: 80px;
     background-color: #a593c2;
     border-color: #a593c2;
+    height: 80px;
     width: 240px;
 }
 
@@ -37,63 +37,63 @@ nav {
 /*profile picture*/
 
 .profile {
-    width: 240px;
     overflow-y: visible;
     position: absolute;
+    width: 240px;
 }
 
 .profile-bg, .profile-picture {
-    width: 240px;
     height: 240px;
     position: absolute;
+    width: 240px;
 }
 
 .profile-bg { overflow: hidden; }
 
 .profile-bg img {
-    width: 250px;
-    height: 250px;
-    filter: blur(16px);
     -webkit-filter: blur(16px);
-    margin: -5px;
     border: 0;
+    filter: blur(16px);
+    height: 250px;
+    margin: -5px;
+    width: 250px;
 }
 
 .profile-picture img.account-photo {
-    width: 160px;
     height: 160px;
     margin-left: 40px;
     margin-top: 40px;
+    width: 160px;
 }
 
 .circle { border-radius: 50%; }
 
 .menu {
-    position: absolute;
     margin-top: 240px;
+    position: absolute;
 }
 
 #sidebar-wrapper {
-    width: 240px;
-    min-height: 100vh;
-    margin-left: -15rem;
-    -webkit-transition: margin .25s ease-out;
     -moz-transition: margin .25s ease-out;
     -o-transition: margin .25s ease-out;
+    -webkit-transition: margin .25s ease-out;
+    margin-left: -15rem;
+    min-height: 100vh;
     transition: margin .25s ease-out;
+    width: 240px;
 }
 
 #sidebar-wrapper .sidebar-heading {
-    padding: 0.875rem 1.25rem;
     font-size: 1.2rem;
+    padding: 0.875rem 1.25rem;
 }
 
 #sidebar-wrapper .list-group { width: 15rem; }
 
 .list-group-item.active, .list-group-item.active:active, .list-group-item.active:focus, .list-group-item.active:visited {
-    color: white;
     background-color: #a593c2 !important;
     border-color: #a593c2;
+    color: white;
     font-weight: bold;
 }
 
@@ -133,34 +133,34 @@ nav {
 }
 
 .table-btn:hover, .table-btn:active {
-    color: #fff;
     background-color: #a593c2 !important;
     border-color: #a593c2 !important;
+    color: #fff;
 }
 
 .quick-add-btn {
+    bottom: 30px;
     font-size: 36px;
     position: fixed;
     right: 30px;
-    bottom: 30px;
 }
 
 .employee-detail, .employee-edit {
-    padding: 15px;
     background-color: rgba(255, 255, 255, 0.6);
+    padding: 15px;
 }
 
 .employee-detail .form-group { margin-bottom: 0; }
 
 .employee-detail-img {
-    width: 150px;
     height: auto;
+    width: 150px;
 }
 
 .track-order-map {
-    width: 350px;
-    height: 500px;
     flex-shrink: 0;
+    height: 500px;
+    width: 350px;
 }
 
 .edit-btn {
@@ -170,17 +170,17 @@ nav {
 }
 
 .edit-btn:hover, .edit-btn:active {
-    color: #fff;
     background-color: #a593c2;
     border-color: #a593c2;
+    color: #fff;
 }
 
 .edit-outline-btn { border-color: #23cfa7; }
 
 .edit-outline-btn:hover, .edit-outline-btn:active {
-    color: #fff;
     background-color: #a593c2 !important;
     border-color: #a593c2 !important;
+    color: #fff;
 }
 
 
